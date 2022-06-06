@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map CAN
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Teensy_CAN	KEYWORD1
+TEENSY_CAN	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+set_send	KEYWORD2
+set_read	KEYWORD2
+dual_send	KEYWORD2
+tie	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+ignore	LITERAL1
