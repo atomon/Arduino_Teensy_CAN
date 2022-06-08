@@ -7,33 +7,39 @@
 #include <algorithm>
 #include <tuple>
 
-TEENSY_CAN::TEENSY_CAN(int _bauds)
+TEENSY_CAN::TEENSY_CAN(uint8_t _bus, int _bauds)
 {
+    bus = _bus;
     bauds = _bauds;
+
+#ifndef __MK66FX1M0__
+    if(bus == 1) #error "Teensy 3.6 with dual CAN bus is required to run can1"
+#endif
+
 }
 
 void TEENSY_CAN::set()
 {
     Serial.println(F("Hello Teensy Single CAN Receiving Example With Objects."));
-    Can0.begin(bauds);
+    can[bus]->begin(bauds);
     delay(100);
-    Can0.attachObj(&can_read);
+    can[bus]->attachObj(&can_read);
     can_read.attachGeneralHandler();
 }
 
 void TEENSY_CAN::set_send()
 {
     Serial.println(F("Hello Teensy Single CAN Receiving Example With Objects."));
-    Can0.begin(bauds);
+    can[bus]->begin(bauds);
     delay(100);
 }
 
 void TEENSY_CAN::set_read()
 {
     Serial.println(F("Hello Teensy Single CAN Receiving Example With Objects."));
-    Can0.begin(bauds);
+    can[bus]->begin(bauds);
     delay(100);
-    Can0.attachObj(&can_read);
+    can[bus]->attachObj(&can_read);
     can_read.attachGeneralHandler();
 }
 

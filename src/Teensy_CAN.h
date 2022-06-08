@@ -19,13 +19,15 @@ class TEENSY_CAN
         CAN_READ can_read;
         CAN_SEND can_send;
 
-        int bauds;
+        int bus, bauds;
+
+        FlexCAN *can[2] = {&Can0, &Can1};
 
         int binary_search(int key);
 
     public:
 
-        TEENSY_CAN(int _bauds);
+        TEENSY_CAN(uint8_t _bus = 0, int _bauds = 1000000);
 
         void set();
 

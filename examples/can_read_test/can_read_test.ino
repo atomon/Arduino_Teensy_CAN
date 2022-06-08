@@ -11,7 +11,7 @@
 #include <Teensy_CAN.h>
 
 //declare object and set baud
-TEENSY_CAN can(1000000);
+TEENSY_CAN CAN0(0, 1000000);
 
 //declare array
 int val[4];
@@ -19,16 +19,16 @@ int val[4];
 void setup(void)
 {
     // setup can_read and can_send
-    can.set();
+    CAN0.set();
 }
 
 void loop(void)
 {
     //Read data with CAN
-    tie(val[0], ignore) = can.read(1);  // tie(Value, ignore) = object name.read(ID);
-    tie(val[1], ignore) = can.read(2);  // 'ignore' means that it doesn't receive
-    tie(val[2], ignore) = can.read(3);
-    tie(val[3], ignore) = can.read(4);
+    tie(val[0], ignore) = CAN0.read(1);  // tie(Value, ignore) = object name.read(ID);
+    tie(val[1], ignore) = CAN0.read(2);  // 'ignore' means that it doesn't receive
+    tie(val[2], ignore) = CAN0.read(3);
+    tie(val[3], ignore) = CAN0.read(4);
 
     //Show on serial monitor
     for(int lp : val){

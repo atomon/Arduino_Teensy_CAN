@@ -11,7 +11,7 @@
 #include <Teensy_CAN.h>
 
 //declare object and set baud
-TEENSY_CAN can(1000000);
+TEENSY_CAN CAN0(0, 1000000);
 
 //declare array
 int id[2] = {1, 2};      // set ID
@@ -20,13 +20,13 @@ int data[4]={11, 2200, 330000, 44000000};  // initial setting
 void setup(void)
 {
     // setup only can_send
-    can.set_send();
+    CAN0.set_send();
 }
 
 void loop(void)
 {   
     //Send together two data with CAN
-    can.dual_send(id, data, 4);  //(ID[array], value[array], number of data)
+    CAN0.dual_send(id, data, 4);  //(ID[array], value[array], number of data)
     
     //Put a delay(minimum 1ms)
     delay(10);
