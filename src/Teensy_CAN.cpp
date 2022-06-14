@@ -11,11 +11,6 @@ TEENSY_CAN::TEENSY_CAN(uint8_t _bus, int _bauds)
 {
     bus = _bus;
     bauds = _bauds;
-
-#ifndef __MK66FX1M0__
-    if(bus == 1) #error "Teensy 3.6 with dual CAN bus is required to run can1"
-#endif
-
 }
 
 void TEENSY_CAN::set()

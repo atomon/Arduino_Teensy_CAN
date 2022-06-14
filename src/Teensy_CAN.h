@@ -21,7 +21,12 @@ class TEENSY_CAN
 
         int bus, bauds;
 
+#ifndef __MK66FX1M0__
+        FlexCAN *can[1] = {&Can0};
+#else 
         FlexCAN *can[2] = {&Can0, &Can1};
+#endif
+
 
         int binary_search(int key);
 
